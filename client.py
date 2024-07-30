@@ -6,7 +6,6 @@ from time import sleep
 
 
 def client_recv_message(client):
-
     chat = subprocess.Popen(["xterm"])
     process = psutil.Process(chat.pid)
     sleep(0.5)

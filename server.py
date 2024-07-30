@@ -48,5 +48,3 @@ if __name__ == "__main__":
             except KeyboardInterrupt:
                 print(f"\nServer {server_ip}:{server_port} shutdown")
                 break
-
-
