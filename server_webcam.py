@@ -22,6 +22,7 @@ with socket.socket() as server:
                 packet = client.recv(4096)
                 packets += packet
             if not packet:
+                print(client.getpeername(), 'disconnected')
                 break
             if not frame_size:
                 frame_size = packets[:payload_size]
