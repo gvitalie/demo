@@ -26,7 +26,8 @@ with socket.socket() as client:
             if cv2.waitKey(1) == ord('q'):
                 break
     except KeyboardInterrupt:
+        print("\nClient disconnected")
+    finally:
         video.release()
         cv2.destroyAllWindows()
-        print("\nClient disconnected")
 

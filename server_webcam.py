@@ -40,5 +40,6 @@ with socket.socket() as server:
                     break
 
     except KeyboardInterrupt:
-        cv2.destroyAllWindows()
         print("\nServer down")
+    finally:
+        cv2.destroyAllWindows()
