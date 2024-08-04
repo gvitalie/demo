@@ -7,11 +7,11 @@ import struct
 with socket.socket() as client:
     client.connect(("localhost", 3456))
 
-    video = cv2.VideoCapture(0)
+    web_cam_video = cv2.VideoCapture(0)
 
     try:
         while True:
-            ret, frame = video.read()
+            ret, frame = web_cam_video.read()
             frame_data = pickle.dumps(frame)
             frame_size = len(frame_data)
             frame_data = struct.pack('Q', frame_size) + frame_data
@@ -24,6 +24,6 @@ with socket.socket() as client:
     except KeyboardInterrupt:
         print("\nClient disconnected")
     finally:
-        video.release()
+        web_cam_video.release()
         cv2.destroyAllWindows()
 
