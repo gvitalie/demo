@@ -26,8 +26,8 @@ def send_webcam_frame(clients):
             else:
                 break
 
-    except KeyboardInterrupt:
-        pass
+    except Exception as e:
+        print(e)
     finally:
         print("Video disconnected\n")
         web_cam_video.release()
