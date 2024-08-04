@@ -47,11 +47,13 @@ if __name__ == "__main__":
                 print(client[1], 'connected')
 
                 if not clients:
+                    clients.append(client)
                     send_webcam_frame_thread = threading.Thread(target=send_webcam_frame,
                                                             args=[clients])
                     send_webcam_frame_thread.daemon = True
                     send_webcam_frame_thread.start()
-                clients.append(client)
+                else:
+                    clients.append(client)
 
         except KeyboardInterrupt:
             print('\nServer down')
