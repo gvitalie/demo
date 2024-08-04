@@ -13,8 +13,8 @@ with socket.socket() as client:
         while True:
             ret, frame = video.read()
             frame_data = pickle.dumps(frame)
-            frame_index_size = len(frame_data)
-            frame_data = struct.pack('Q', frame_index_size) + frame_data
+            frame_size = len(frame_data)
+            frame_data = struct.pack('Q', frame_size) + frame_data
 
             client.sendall(frame_data)
 
