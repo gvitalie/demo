@@ -8,6 +8,7 @@ with socket.socket() as server:
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind(("localhost", 3456))
     server.listen()
+    print('Server listening\n')
 
     try:
         client, address = server.accept()
