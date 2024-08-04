@@ -19,9 +19,9 @@ def send_webcam_frame(clients):
             if clients:
                 for client_id in clients:
                     try:
-                        client_id.send(frame_data)
+                        client_id[0].send(frame_data)
                     except Exception as e:
-                        print(e, f'-> Client or network may be down')
+                        print(e, f'-> Client {client[1][0]}:{client_id[1][1]} disconnected')
                         clients.remove(client_id)
                         if not clients:
                             break
@@ -44,8 +44,8 @@ with socket.socket() as server:
     try:
         clients = list()
         while True:
-            client, address = server.accept()
-            print(address, 'connected')
+            client = server.accept()
+            print(client[1], 'connected')
 
             if not clients:
                 send_webcam_frame_thread = threading.Thread(target=send_webcam_frame,
