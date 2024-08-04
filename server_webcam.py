@@ -17,7 +17,7 @@ with socket.socket() as server:
         frame_size = 0
         frame_index_size = struct.calcsize('Q')
         while True:
-            for i in range(20):
+            for i in range(220):
                 packet = client.recv(4096)
                 packets += packet
             if not packet:
