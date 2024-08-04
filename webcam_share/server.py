@@ -23,8 +23,6 @@ def send_webcam_frame(clients):
                     except Exception as e:
                         print(e, f'-> Client {client[1][0]}:{client_id[1][1]} disconnected')
                         clients.remove(client_id)
-                        if not clients:
-                            break
             else:
                 break
 
