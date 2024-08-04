@@ -29,7 +29,7 @@ def send_webcam_frame(clients):
     except Exception as e:
         print(e)
     finally:
-        print("Video disconnected\n")
+        print("WebCam disconnected\n")
         web_cam_video.release()
 
 
