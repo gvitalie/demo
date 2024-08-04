@@ -6,7 +6,6 @@ import cv2
 
 with socket.socket() as server:
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    # print(server.getblocking())
     server.bind(("localhost", 3456))
     server.listen()
 
@@ -15,8 +14,8 @@ with socket.socket() as server:
         print(address, 'connected')
 
         packets = b''
-        frame_size = b''
-        payload_size = struct.calcsize('Q')
+        frame_size = 0
+        frame_index_size = struct.calcsize('Q')
         while True:
             for i in range(20):
                 packet = client.recv(4096)
@@ -25,14 +24,12 @@ with socket.socket() as server:
                 print(client.getpeername(), 'disconnected')
                 break
             if not frame_size:
-                frame_size = packets[:payload_size]
-                frame_size_int = struct.unpack('Q', frame_size)[0]
-                # print(frame_size_int)
-                packets = packets[payload_size:]
-            if len(packets) > frame_size_int:
-                frame_data = packets[:frame_size_int]
-                packets = packets[frame_size_int:]
-                frame_size = b''
+                frame_size = struct.unpack('Q', packets[:frame_index_size])[0]
+                packets = packets[frame_index_size:]
+            if len(packets) > frame_size:
+                frame_data = packets[:frame_size]
+                packets = packets[frame_size:]
+                frame_size = 0
 
                 frame = pickle.loads(frame_data)
                 cv2.imshow('Server', frame)

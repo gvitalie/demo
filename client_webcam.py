@@ -5,7 +5,6 @@ import struct
 
 
 with socket.socket() as client:
-    # print(client.getblocking())
     client.connect(("localhost", 3456))
 
     video = cv2.VideoCapture(0)
@@ -14,13 +13,10 @@ with socket.socket() as client:
         while True:
             ret, frame = video.read()
             frame_data = pickle.dumps(frame)
-            frame_data = struct.pack('Q', len(frame_data)) + frame_data
+            frame_index_size = len(frame_data)
+            frame_data = struct.pack('Q', frame_index_size) + frame_data
 
             client.sendall(frame_data)
-
-            # recover = pickle.loads(frame_data)
-            # print(recover)
-            # cv2.imshow("Client", recover)
 
             cv2.imshow("Client", frame)
             if cv2.waitKey(1) == ord('q'):
