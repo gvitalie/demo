@@ -33,26 +33,27 @@ def send_webcam_frame(clients):
         web_cam_video.release()
 
 
-with socket.socket() as server:
-    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(('localhost', 3456))
-    server.listen()
-    print('Server listen\n')
+if __name__ == "__main__":
+    with socket.socket() as server:
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server.bind(('localhost', 3456))
+        server.listen()
+        print('Server listen\n')
 
-    try:
-        clients = list()
-        while True:
-            client = server.accept()
-            print(client[1], 'connected')
+        try:
+            clients = list()
+            while True:
+                client = server.accept()
+                print(client[1], 'connected')
 
-            if not clients:
-                send_webcam_frame_thread = threading.Thread(target=send_webcam_frame,
-                                                        args=[clients])
-                send_webcam_frame_thread.daemon = True
-                send_webcam_frame_thread.start()
-            clients.append(client)
+                if not clients:
+                    send_webcam_frame_thread = threading.Thread(target=send_webcam_frame,
+                                                            args=[clients])
+                    send_webcam_frame_thread.daemon = True
+                    send_webcam_frame_thread.start()
+                clients.append(client)
 
-    except KeyboardInterrupt:
-        print('\nServer down')
-    finally:
-        pass
+        except KeyboardInterrupt:
+            print('\nServer down')
+        finally:
+            pass
