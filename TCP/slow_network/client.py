@@ -13,6 +13,10 @@ def recv_frame(client):
     frame_index_size = struct.calcsize('Q')
     while True:
         packet = client.recv(4096)
+
+        # Uncomment to simulate slow network
+        # sleep(0.002)
+
         packets += packet
         if not frame_size:
             frame_size = struct.unpack('Q', packets[:frame_index_size])[0]
