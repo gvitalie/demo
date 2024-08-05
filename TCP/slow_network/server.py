@@ -8,7 +8,7 @@ from queue import Queue
 SERVER = ('localhost', 3456)
 
 
-def send_webcam_frame(clients):
+def webcam_frame(clients):
     web_cam_video = cv2.VideoCapture(0)
     print("WebCam streaming ...")
     try:
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
                 if not clients:
                     clients.append(client)
-                    send_webcam_frame_thread = threading.Thread(target=send_webcam_frame,
+                    send_webcam_frame_thread = threading.Thread(target=webcam_frame,
                                                             args=(clients,))
                     send_webcam_frame_thread.daemon = True
                     send_webcam_frame_thread.start()
