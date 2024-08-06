@@ -49,8 +49,6 @@ def client_frame(client_id, clients):
             clients.remove(client_id)
             print(e, f'-> Client {client_id[0][1]} disconnected')
             break
-        finally:
-            pass
 
 
 if __name__ == "__main__":

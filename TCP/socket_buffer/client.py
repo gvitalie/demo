@@ -10,7 +10,7 @@ SERVER = ('localhost', 3456)
 
 
 def get_frame(client_id, queue_in, status):
-    print('Get frames')
+    print('Get frames started')
     while not status.is_set():
         packet = client_id.recv(4096)
         frame_size = int(packet.decode('utf-8'))
@@ -25,7 +25,7 @@ def get_frame(client_id, queue_in, status):
 
 
 def show_frame(client_id, queue_out, status):
-    print('Show frames')
+    print('Show frames started')
     while not status.is_set():
         packets = queue_out.get()
 
@@ -53,19 +53,20 @@ if __name__ == "__main__":
 
             get_frame_thread = threading.Thread(target=get_frame,
                                                 args=(client, queue_link, status,))
-            get_frame_thread.daemon = True
+            # get_frame_thread.daemon = True
             get_frame_thread.start()
-            # get_frame_thread.join(1)
+            # get_frame_thread.join()
 
             show_frame_thread = threading.Thread(target=show_frame,
                                                  args=(client, queue_link, status,))
-            show_frame_thread.daemon = True
+            # show_frame_thread.daemon = True
             show_frame_thread.start()
-            # get_frame_thread.join(1)
+            # get_frame_thread.join()
 
             while status.wait():
                 break
 
         except KeyboardInterrupt:
+            status.set()
             print(f'\nClient {client.getsockname()} disconnected')
 
