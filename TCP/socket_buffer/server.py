@@ -52,32 +52,34 @@ def client_frame(client_id, clients):
 
 if __name__ == "__main__":
     with socket.socket() as server:
-        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.bind(SERVER)
-        server.listen()
-        print('Server listen\n')
-
         try:
-            clients = list()
-            while True:
-                client = server.accept()
-                client = (client, queue.Queue(1))
-                print(f'Client {client[0][1]} connected')
+            server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            server.bind(SERVER)
+            server.listen()
+            print('Server listen\n')
 
-                if not clients:
-                    clients.append(client)
-                    webcam_thread = threading.Thread(target=webcam_frame,
-                                                     args=(clients,))
-                    webcam_thread.daemon = True
-                    webcam_thread.start()
-                else:
-                    clients.append(client)
+            try:
+                clients = list()
+                while True:
+                    client = server.accept()
+                    client = (client, queue.Queue(1))
+                    print(f'Client {client[0][1]} connected')
 
-                client_thread = threading.Thread(target=client_frame,
-                                                 args=(client, clients))
-                client_thread.daemon = True
-                client_thread.start()
+                    if not clients:
+                        clients.append(client)
+                        webcam_thread = threading.Thread(target=webcam_frame,
+                                                         args=(clients,))
+                        webcam_thread.daemon = True
+                        webcam_thread.start()
+                    else:
+                        clients.append(client)
 
+                    client_thread = threading.Thread(target=client_frame,
+                                                     args=(client, clients))
+                    client_thread.daemon = True
+                    client_thread.start()
+            except Exception as e:
+                print(e)
         except KeyboardInterrupt:
             pass
         finally:
