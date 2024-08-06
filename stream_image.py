@@ -1,11 +1,12 @@
 import cv2
 
 if __name__ == "__main__":
-    web_cam_video = cv2.VideoCapture(0)
+    image_frame = cv2.imread('Philosophy.png')
+
     print("Streaming ...")
     try:
         while True:
-            ret, frame = web_cam_video.read()
+            frame = image_frame
 
             cv2.imshow('Camera', frame)
             if cv2.waitKey(1) == ord('q'):
@@ -14,5 +15,4 @@ if __name__ == "__main__":
         pass
     finally:
         print("\nVideo disconnected")
-        web_cam_video.release()
         cv2.destroyAllWindows()
