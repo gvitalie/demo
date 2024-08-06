@@ -8,7 +8,7 @@ if __name__ == "__main__":
         while True:
             frame = image_frame
 
-            cv2.imshow('Camera', frame)
+            cv2.imshow('Philosophy', frame)
             if cv2.waitKey(1) == ord('q'):
                 break
     except KeyboardInterrupt:
