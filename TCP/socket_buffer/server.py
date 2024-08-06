@@ -32,7 +32,6 @@ def webcam_frame(clients):
 
 
 def client_frame(client_id, clients):
-    print(f'Client {client_id[0][1]} see WebCam')
     while True:
         try:
             frame_data = client_id[1].get()

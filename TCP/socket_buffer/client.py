@@ -9,36 +9,39 @@ SERVER = ('localhost', 3456)
 
 if __name__ == "__main__":
     with socket.socket() as client:
-        client.connect(SERVER)
-        print(f'Client {client.getsockname()} connected\n')
-
         try:
-            print('Get frames')
-            while True:
-                packet = client.recv(4096)
-                if not packet:
-                    break
-                frame_size = int(packet.decode('utf-8'))
+            client.connect(SERVER)
+            print(f'Client {client.getsockname()} connected')
 
-                acknowledge = 'OK'.encode('utf-8')
-                client.send(acknowledge)
+            try:
+                print('Get frames')
+                while True:
+                    packet = client.recv(4096)
+                    if not packet:
+                        break
+                    frame_size = int(packet.decode('utf-8'))
 
-                packets = b''
-                for i in range(1 + frame_size // 4096):
-                    packets += client.recv(4096)
+                    acknowledge = 'OK'.encode('utf-8')
+                    client.send(acknowledge)
 
-                acknowledge = 'OK'.encode('utf-8')
-                client.send(acknowledge)
+                    packets = b''
+                    for i in range(1 + frame_size // 4096):
+                        packets += client.recv(4096)
 
-                frame = pickle.loads(packets)
+                    acknowledge = 'OK'.encode('utf-8')
+                    client.send(acknowledge)
 
-                cv2.imshow('Client', frame)
-                key = cv2.waitKey(1) == ord('q')
-                if key:
-                    break
+                    frame = pickle.loads(packets)
 
-        except KeyboardInterrupt:
-            pass
-        finally:
-            print(f'Client {client.getsockname()} disconnected')
-            cv2.destroyAllWindows()
+                    cv2.imshow('Client', frame)
+                    key = cv2.waitKey(1) == ord('q')
+                    if key:
+                        break
+
+            except KeyboardInterrupt:
+                pass
+            finally:
+                print(f'\nClient {client.getsockname()} disconnected')
+                cv2.destroyAllWindows()
+        except Exception as e:
+            print('\n', e, "-> Server or network may be down")
