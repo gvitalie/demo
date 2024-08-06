@@ -1,7 +1,7 @@
 import socket
 import pickle
 import cv2
-
+from time import sleep
 
 SERVER = ('localhost', 3456)
 
@@ -26,6 +26,9 @@ if __name__ == "__main__":
                     packets = b''
                     for i in range(1 + frame_size // 4096):
                         packets += client.recv(4096)
+
+                    # Uncomment to simulate slow network
+                    # sleep(0.2)
 
                     acknowledge = 'OK'.encode('utf-8')
                     client.send(acknowledge)
