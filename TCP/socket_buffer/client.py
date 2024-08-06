@@ -1,8 +1,7 @@
 import socket
 import pickle
-import threading
 import cv2
-from time import sleep
+
 
 SERVER = ('localhost', 3456)
 
