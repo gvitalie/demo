@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
                     frame = pickle.loads(packets)
 
-                    cv2.imshow('Client', frame)
+                    cv2.imshow(f'Client {client.getsockname()}', frame)
                     key = cv2.waitKey(1) == ord('q')
                     if key:
                         break
