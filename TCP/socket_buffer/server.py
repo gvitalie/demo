@@ -9,8 +9,8 @@ SERVER = ('localhost', 3456)
 
 def webcam_frame(clients):
     webcam_video = cv2.VideoCapture(0)
-    # webcam_video.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
-    # webcam_video.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
+    webcam_video.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
+    webcam_video.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
     print("WebCam streaming ...")
 
     try:
