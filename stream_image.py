@@ -1,6 +1,7 @@
 import cv2
 
 if __name__ == "__main__":
+
     image_frame = cv2.imread('Philosophy.png')
 
     print("Streaming ...")
