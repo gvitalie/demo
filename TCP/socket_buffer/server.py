@@ -60,28 +60,27 @@ if __name__ == "__main__":
             server.listen()
             print('Server listen\n')
 
-            try:
-                clients = list()
-                while True:
-                    client = server.accept()
-                    client = (client, queue.Queue(1))
-                    print(f'Client {client[0][1]} connected')
+            clients = list()
+            while True:
+                client = server.accept()
+                client = (client, queue.Queue(1))
+                print(f'Client {client[0][1]} connected')
 
-                    if not clients:
-                        clients.append(client)
-                        webcam_thread = threading.Thread(target=webcam_frame,
-                                                         args=(clients,))
-                        webcam_thread.daemon = True
-                        webcam_thread.start()
-                    else:
-                        clients.append(client)
+                if not clients:
+                    clients.append(client)
+                    webcam_thread = threading.Thread(target=webcam_frame,
+                                                     args=(clients,))
+                    webcam_thread.daemon = True
+                    webcam_thread.start()
+                else:
+                    clients.append(client)
 
-                    client_thread = threading.Thread(target=client_frame,
-                                                     args=(client, clients))
-                    client_thread.daemon = True
-                    client_thread.start()
-            except Exception as e:
-                print(e)
+                client_thread = threading.Thread(target=client_frame,
+                                                 args=(client, clients))
+                client_thread.daemon = True
+                client_thread.start()
+        except Exception as e:
+            print(e)
         except KeyboardInterrupt:
             pass
         finally:
