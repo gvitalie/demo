@@ -29,7 +29,14 @@ try:
                         dtype=np.int16, latency=latency) as stream:
         while True:
             audio_data, _ = stream.read(1024)  # Read audio data from the microphone
-            client_socket.sendall(audio_data.tobytes())  # Send audio data to the client
+            audio_frame = audio_data.tobytes()
+            audio_frame_size = len(audio_frame)
+
+            client_socket.send(str(audio_frame_size).encode('utf-8'))
+            acknowledge = client_socket.recv(1024)
+
+            client_socket.sendall(audio_frame)  # Send audio data to the client
+            acknowledge = client_socket.recv(1024)
 except Exception as e:
     print(f"Error: {e}")
 
