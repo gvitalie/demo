@@ -21,18 +21,18 @@ try:
     with sd.OutputStream(samplerate=samplerate, channels=channels,
                          dtype=np.int16, latency=latency) as stream:
         while True:
-            audio_frame_size = int(client_socket.recv(1024).decode('utf-8'))
+            audio_frame_size = int(client_socket.recv(4096).decode('utf-8'))
 
             acknowledge = 'OK'.encode('utf-8')
             client_socket.send(acknowledge)
 
-            iterations = audio_frame_size//1024
-            if audio_frame_size % 1024 > 0:
+            iterations = audio_frame_size//4096
+            if audio_frame_size % 4096 > 0:
                 iterations += 1
 
             audio_data_bytes = b''
             for i in range(iterations):
-                audio_data_bytes += client_socket.recv(1024)  # Receive audio data from the server
+                audio_data_bytes += client_socket.recv(4096)  # Receive audio data from the server
                 if not audio_data_bytes:
                     break
 
@@ -41,6 +41,8 @@ try:
 
             audio_data = np.frombuffer(audio_data_bytes, dtype=np.int16)  # Convert bytes to numpy array
             stream.write(audio_data)  # Play received audio data
+except KeyboardInterrupt:
+    pass
 except Exception as e:
     print(f"Error: {e}")
 
