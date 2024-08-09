@@ -1,13 +1,13 @@
 # Experiments using Python socket.
 
 **Goals:**  
-[x] read microphone input and send over socket  
-[x] read webcam and send over socket  
+- [x] read microphone input and send over socket  
+- [x] read webcam and send over socket  
 
 **Desired types of communication:**  
-[x] uniplex  
-[x] duplex  
-[x] multiplex  
+- [x] uniplex  
+- [x] duplex  
+- [x] multiplex  
 
 **Bibliography:**
 
