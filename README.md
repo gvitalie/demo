@@ -1,7 +1,7 @@
 # Experiments using Python socket.
 
 **Goals:**  
-- [x] read microphone input and send over socket  
+- [x] read microphone audio and send over socket  
 - [x] read webcam video and send over socket  
 
 **Desired types of communication:**  
