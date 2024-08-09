@@ -23,5 +23,5 @@ with sd.Stream(channels=channels,
                blocksize=blocksize,
                never_drop_input=False):
     # sd.sleep(int(duration * 1000))
-    input("Press any key to stop ...")
+    input("Press Enter to stop ...")
 
