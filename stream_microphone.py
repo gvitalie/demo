@@ -11,7 +11,7 @@ def callback(indata, outdata, frames, time, status):
     outdata[:] = indata
 
 
-samplerate = 44100
+samplerate = 8000
 blocksize = 10
 latency = 'high'
 channels = 2
@@ -23,5 +23,5 @@ with sd.Stream(channels=channels,
                blocksize=blocksize,
                never_drop_input=False):
     # sd.sleep(int(duration * 1000))
-    input("Press Enter to stop ...")
+    input("Press Enter to stop ... ")
 
