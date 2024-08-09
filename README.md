@@ -2,7 +2,7 @@
 
 **Goals:**  
 - [x] read microphone input and send over socket  
-- [x] read webcam and send over socket  
+- [x] read webcam video and send over socket  
 
 **Desired types of communication:**  
 - [x] uniplex  
