@@ -1,5 +1,3 @@
-To do: explain this example.
-
 **Example description:**  
 Server `server.py` share its webcam video to each connected `client.py`.  
 This example support slow network.  
