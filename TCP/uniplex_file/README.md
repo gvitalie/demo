@@ -1,2 +1,2 @@
 **Example description:**  
-Server `server.py` will receive an image file from `client.py` over socket.
+Server `server.py` will receive an image file from only one connected `client.py`.
