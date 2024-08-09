@@ -20,19 +20,20 @@ latency = 'high'
 try:
     with sd.OutputStream(samplerate=samplerate, channels=channels,
                          dtype=np.int16, latency=latency) as stream:
+        socket_buffer = 128
         while True:
-            audio_frame_size = int(client_socket.recv(4096).decode('utf-8'))
+            audio_frame_size = int(client_socket.recv(socket_buffer).decode('utf-8'))
 
             acknowledge = 'OK'.encode('utf-8')
             client_socket.send(acknowledge)
 
-            iterations = audio_frame_size//4096
-            if audio_frame_size % 4096 > 0:
+            iterations = audio_frame_size//socket_buffer
+            if audio_frame_size % socket_buffer > 0:
                 iterations += 1
 
             audio_data_bytes = b''
             for i in range(iterations):
-                audio_data_bytes += client_socket.recv(4096)  # Receive audio data from the server
+                audio_data_bytes += client_socket.recv(socket_buffer)  # Receive audio data from the server
                 if not audio_data_bytes:
                     break
 
