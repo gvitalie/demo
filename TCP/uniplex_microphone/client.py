@@ -15,7 +15,7 @@ channels = 1
 
 print("Receiving audio...")
 
-latency = 'low'
+latency = 'high'
 # Audio receiving loop
 try:
     with sd.OutputStream(samplerate=samplerate, channels=channels,

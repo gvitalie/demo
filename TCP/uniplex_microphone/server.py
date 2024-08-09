@@ -22,7 +22,7 @@ channels = 1
 
 print("Streaming audio...")
 
-latency = 'low'
+latency = 'high'
 # Audio streaming loop
 try:
     with sd.InputStream(samplerate=samplerate, channels=channels,
@@ -44,4 +44,3 @@ except Exception as e:
 print("Closing connections...")
 client_socket.close()
 server_socket.close()
-
