@@ -1,7 +1,7 @@
 **Example description:**  
 Server `server.py` share its webcam video to each connected `client.py`.  
 This version does not support slow network.  
-For slow network see `TCP/socket_buffer` and `TCP/slow_network` example.
+For slow network see `TCP/slow_network` and `TCP/socket_buffer` example.
 
 This example is inspired from here:   
 Socket programming to send and receive webcam video | PyShine
