@@ -19,20 +19,17 @@ client_socket, addr = server_socket.accept()
 print(f"Accepted connection from {addr}")
 
 # Audio setup
-samplerate = 16000
+samplerate = 15000
 channels = 1
-blocksize = 100
 
 print("Streaming audio...")
 
 latency = 'high'
 # Audio streaming loop
 try:
-    with sd.InputStream(samplerate=samplerate, channels=channels,
-                        dtype=np.int16, blocksize=blocksize,
-                        latency=latency) as stream:
+    with sd.InputStream(samplerate=samplerate, channels=channels) as stream:
 
-        socket_buffer = 256
+        socket_buffer = 1024
         while True:
             audio_data, _ = stream.read(stream.read_available)  # Read audio data from the microphone
             # audio_frame = audio_data.tobytes()

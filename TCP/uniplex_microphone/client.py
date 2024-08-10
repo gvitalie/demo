@@ -11,19 +11,17 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((HOST, PORT))
 
 # Audio setup
-samplerate = 16000
+samplerate = 15000
 channels = 1
-blocksize = 100
+
 
 print("Receiving audio...")
 
 latency = 'high'
 # Audio receiving loop
 try:
-    with sd.OutputStream(samplerate=samplerate, channels=channels,
-                         dtype=np.int16, blocksize=blocksize,
-                         latency=latency) as stream:
-        socket_buffer = 256
+    with sd.OutputStream(samplerate=samplerate, channels=channels) as stream:
+        socket_buffer = 1024
         while True:
             audio_frame_size = int(client_socket.recv(socket_buffer).decode('utf-8'))
 
