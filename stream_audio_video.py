@@ -11,7 +11,9 @@ def callback(indata, outdata, frames, time, status):
 
 
 def microphone(event):
-    with sd.Stream(channels=None, callback=callback, samplerate=9600):
+    with sd.Stream(channels=None, callback=callback,
+                   samplerate=9600, blocksize=100):
+        sd.sleep(3000)
         event.wait()
 
 

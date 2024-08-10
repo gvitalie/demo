@@ -8,7 +8,8 @@ def callback(indata, outdata, frames, time, status):
 
 
 try:
-    with sd.Stream(channels=2, callback=callback):
+    with sd.Stream(channels=2, callback=callback,
+                   blocksize=100, samplerate=8000):
         input('Press Enter to stop ... ')
 except Exception as e:
     print(e)

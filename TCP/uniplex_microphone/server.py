@@ -1,6 +1,7 @@
 import socket
 import sounddevice as sd
 import numpy as np
+import pickle
 
 # Socket setup
 HOST = 'localhost'  # Replace with your server IP or 'localhost'
@@ -18,8 +19,9 @@ client_socket, addr = server_socket.accept()
 print(f"Accepted connection from {addr}")
 
 # Audio setup
-samplerate = 44100
+samplerate = 16000
 channels = 1
+blocksize = 100
 
 print("Streaming audio...")
 
@@ -27,12 +29,14 @@ latency = 'high'
 # Audio streaming loop
 try:
     with sd.InputStream(samplerate=samplerate, channels=channels,
-                        dtype=np.int16, latency=latency) as stream:
+                        dtype=np.int16, blocksize=blocksize,
+                        latency=latency) as stream:
 
-        socket_buffer = 128
+        socket_buffer = 256
         while True:
-            audio_data, _ = stream.read(socket_buffer)  # Read audio data from the microphone
-            audio_frame = audio_data.tobytes()
+            audio_data, _ = stream.read(stream.read_available)  # Read audio data from the microphone
+            # audio_frame = audio_data.tobytes()
+            audio_frame = pickle.dumps(audio_data)
             audio_frame_size = len(audio_frame)
 
             client_socket.send(str(audio_frame_size).encode('utf-8'))
