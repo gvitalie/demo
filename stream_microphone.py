@@ -1,5 +1,4 @@
 import sounddevice as sd
-duration = 5.5  # seconds
 
 
 def callback(indata, outdata, frames, time, status):
@@ -9,5 +8,4 @@ def callback(indata, outdata, frames, time, status):
 
 
 with sd.Stream(channels=2, callback=callback):
-    # sd.sleep(int(duration * 1000))
     input('Press Enter to stop ... ')
