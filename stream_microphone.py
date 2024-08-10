@@ -7,5 +7,10 @@ def callback(indata, outdata, frames, time, status):
     outdata[:] = indata
 
 
-with sd.Stream(channels=2, callback=callback):
-    input('Press Enter to stop ... ')
+try:
+    with sd.Stream(channels=2, callback=callback):
+        input('Press Enter to stop ... ')
+except Exception as e:
+    print(e)
+except KeyboardInterrupt:
+    print("\nDisconnected")
