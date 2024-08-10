@@ -20,7 +20,7 @@ print("Receiving audio...")
 latency = 'high'
 # Audio receiving loop
 try:
-    with sd.OutputStream(samplerate=samplerate, channels=channels) as stream:
+    with sd.OutputStream() as stream:
         socket_buffer = 1024
         while True:
             audio_frame_size = int(client_socket.recv(socket_buffer).decode('utf-8'))

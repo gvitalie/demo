@@ -27,7 +27,7 @@ print("Streaming audio...")
 latency = 'high'
 # Audio streaming loop
 try:
-    with sd.InputStream(samplerate=samplerate, channels=channels) as stream:
+    with sd.InputStream() as stream:
 
         socket_buffer = 1024
         while True:

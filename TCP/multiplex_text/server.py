@@ -27,7 +27,7 @@ def client_recv_message(client, address, clients):
 
 if __name__ == "__main__":
 
-    SERVER_HOST = "amadeus"
+    SERVER_HOST = "192.168.1.2"
     SERVER_PORT = 3456
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
