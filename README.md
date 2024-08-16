@@ -54,5 +54,3 @@ me@amadeus:~$ python3 -q
 me@amadeus:~$ 
 ```
 
-**Bibliography:**  
-- [x] [Zero is odd or even number? Zero is a neutral number, neither odd nor even ... | by Aa | Aug, 2024 | Medium](https://medium.com/@gvitalie/zero-is-odd-or-even-number-a3adefa7d7f3)
