@@ -54,4 +54,3 @@ me@amadeus:~$ python3 -q
 me@amadeus:~$ 
 ```
 
-![](TCP/uniplex_file/Internet.png)
