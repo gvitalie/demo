@@ -1,6 +1,6 @@
 To do: idea.
 
-# Incidence matrix for all sorting algorithms
+# Incidence matrix
 
 ```Python
 from random import randint, seed
