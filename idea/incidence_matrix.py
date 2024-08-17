@@ -1,22 +1,25 @@
-from random import randint
+from random import randint, seed
 from time import sleep
 
+kernel = 13
+seed(kernel)
+
 tsec = 0.1
-while True:
+for i in range(3):
     try:
         a = [randint(0, 100) for i in range(10)]
         print(a)
         sleep(tsec)
         for i in range(len(a)):
             print("{:>4}:".format(a[i]), end=' ')
-            status = 0
+            index = 0
             for j in range(len(a)):
                 state = int(a[i] > a[j])
                 if state:
-                    status += state
-                print(state, end=' ')
+                    index += state
+                print(state, flush=True, end=' ')
                 sleep(tsec)
-            print(f":{status}")
+            print(f":{index}")
         print()
     except Exception as e:
         print(e)
