@@ -1,5 +1,27 @@
 To do: idea.
 
+# Estimation
+
+```Python
+import math
+
+p = 6
+n = 10 ** p
+
+sum_h = 0
+for i in range(n + 1):
+    h = (i * (n - i)) ** (1/2)
+    sum_h += h
+
+pi0 = 8 * sum_h / n / n
+
+print(" ", math.pi)
+print("~", pi0)
+
+#   3.141592653589793
+# ~ 3.141592650263593
+```
+
 # Incidence matrix
 
 ```Python
