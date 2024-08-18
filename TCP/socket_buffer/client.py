@@ -2,6 +2,7 @@ import socket
 import pickle
 import cv2
 from time import sleep
+import math
 
 SERVER = ('localhost', 3456)
 
@@ -23,9 +24,11 @@ if __name__ == "__main__":
                 client.send(acknowledge)
 
                 packets = b''
-                iterations = frame_size//4096
-                if frame_size % 4096 > 0:
-                    iterations += 1
+                # iterations = frame_size//4096
+                # if frame_size % 4096 > 0:
+                #     iterations += 1
+
+                iterations = math.ceil(frame_size/4096)
                 for i in range(iterations):
                     packets += client.recv(4096)
 
