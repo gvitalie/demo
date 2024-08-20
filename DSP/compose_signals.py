@@ -37,7 +37,7 @@ plt.margins(x=0, y=1)
 plt.legend()
 
 plt.subplot(425)
-plt.plot(npTime,noiseSignal, linewidth=1, label="Signal with noise")
+plt.plot(npTime, noiseSignal, linewidth=1, label="Signal with noise")
 plt.margins(x=0, y=1)
 plt.legend()
 # plt.show()
@@ -45,14 +45,14 @@ plt.legend()
 plt.subplot(426)
 n = len(npTime)
 yf = rfft(noiseSignal)
-xf = rfftfreq(n,step)
-plt.plot(np.abs(yf), linewidth=1,label="DFT")
+xf = rfftfreq(n, step)
+plt.plot(np.abs(yf), linewidth=1, label="DFT")
 plt.margins(x=0, y=0.5)
 plt.legend()
 
 plt.subplot(427)
 yf_abs = np.abs(yf)
-indices = yf_abs>300   # filter out those value under 300
+indices = yf_abs > 300   # filter out those value under 300
 yfClean = indices * yf # noise frequency will be set to 0
 plt.plot(np.abs(yfClean), linewidth=1, label="DFT Removed Noise Frequencies")
 plt.margins(x=0, y=0.5)
