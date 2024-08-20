@@ -21,8 +21,8 @@ plt.margins(x=0, y=1)
 plt.legend()
 
 plt.subplot(413)
-plt.plot(npTime, cleanSignal, linewidth=1, label="Signal "
-                                                 + str(signFreq1) + "Hz and " + str(signFreq2) + "Hz combined")
+plt.plot(npTime, cleanSignal, linewidth=1,
+         label="Signal " + str(signFreq1) + "Hz and " + str(signFreq2) + "Hz combined")
 plt.margins(x=0, y=1)
 plt.legend()
 # plt.show()
