@@ -12,6 +12,7 @@ tsec = 1
 
 y = list()
 x = list()
+z = list()
 n = 5
 for k in range(1, 10 ** n, 10000):
 
@@ -21,6 +22,11 @@ for k in range(1, 10 ** n, 10000):
     # print(a)
 
     q = queue.deque()
+
+    start = time.time()
+    sorted(a)
+    print(time.time() - start)
+    z.append(time.time() - start)
 
     start = time.time()
     for i in range(len(a)):
@@ -34,9 +40,9 @@ for k in range(1, 10 ** n, 10000):
     # print(q, '\n')
     sleep(tsec)
 
-
 plt.plot(x, y)
-# plt.xscale('log')
+plt.plot(x, z)
+plt.xscale('log')
 plt.xlabel('Vector size')
 plt.ylabel('Time (sec)')
 plt.grid()
