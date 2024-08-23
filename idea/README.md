@@ -104,33 +104,37 @@ Process finished with exit code 0
 import bisect
 from random import randint, seed
 from time import sleep
+import queue
 
 kernel = 13
 seed(kernel)
 
 tsec = 1
 for i in range(3):
+
     a = [randint(10, 99) for i in range(10)]
     print(a)
-    for i in range(1, len(a)):
+
+    q = queue.deque()
+
+    for i in range(len(a)):
         temp = a.pop()
-        index = bisect.bisect_right(a[:i], temp)
-        a.insert(index, temp)
-    print(a)
-    print()
+        index = bisect.bisect_right(q, temp)
+        q.insert(index, temp)
+    print(q, '\n')
     sleep(tsec)
 ```
 
 ```Python
 /home/me/PycharmProjects/demo/.venv/bin/python /home/me/PycharmProjects/demo/idea/algorithm.py 
 [43, 47, 97, 97, 33, 93, 39, 95, 28, 38]
-[28, 33, 38, 39, 43, 47, 93, 95, 97, 97]
+deque([28, 33, 38, 39, 43, 47, 93, 95, 97, 97]) 
 
 [92, 33, 26, 19, 78, 37, 47, 13, 65, 26]
-[13, 19, 26, 26, 33, 37, 47, 65, 78, 92]
+deque([13, 19, 26, 26, 33, 37, 47, 65, 78, 92]) 
 
 [97, 87, 11, 45, 28, 20, 43, 67, 65, 27]
-[11, 20, 27, 28, 43, 45, 65, 67, 87, 97]
+deque([11, 20, 27, 28, 43, 45, 65, 67, 87, 97]) 
 
 
 Process finished with exit code 0
