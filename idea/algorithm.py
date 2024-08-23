@@ -40,10 +40,17 @@ for k in range(1, 10 ** n, 10000):
     # print(q, '\n')
     sleep(tsec)
 
+plt.subplot(211)
 plt.plot(x, y)
 plt.plot(x, z)
-plt.xscale('log')
-plt.xlabel('Vector size')
 plt.ylabel('Time (sec)')
 plt.grid()
+
+plt.subplot(212)
+plt.plot(x, z)
+plt.ylabel('Time (sec)')
+plt.grid()
+
+# plt.xscale('log')
+plt.xlabel('Vector size')
 plt.show()
