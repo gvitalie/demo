@@ -14,7 +14,7 @@ for i in range(3):
 
     q = queue.deque()
 
-    for i in range(1, len(a)+1):
+    for i in range(len(a)):
         temp = a.pop()
         index = bisect.bisect_right(q, temp)
         q.insert(index, temp)
