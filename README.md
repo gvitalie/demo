@@ -10,5 +10,9 @@
 - [x] duplex  
 - [x] multiplex  
 
+---
+
+- [x] [Zero is odd or even number? Zero is a neutral number, neither odd nor even ... | by Aa | Aug, 2024 | Medium](https://medium.com/@gvitalie/zero-is-odd-or-even-number-a3adefa7d7f3)
+
 [![Intelligence](Aa.jpg)](https://deepinfra.com/chat)
 
