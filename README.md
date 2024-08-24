@@ -10,5 +10,5 @@
 - [x] duplex  
 - [x] multiplex  
 
-
+![Intelligence](Aa.jpg)
 
