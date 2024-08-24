@@ -12,7 +12,7 @@
 
 ---
 
-- [x] [Zero is odd or even number? ... | by Aa | Aug, 2024 | Medium](https://medium.com/@gvitalie/zero-is-odd-or-even-number-a3adefa7d7f3)
+- [x] [Zero is odd or even number? ... | by Aa | Aug, 2024 | Medium](https://medium.com/@gvitalie/part-1-zero-is-odd-or-even-number-6e316b04bcbd)
 
 [![Intelligence](Aa.jpg)](https://deepinfra.com/chat)
 
