@@ -7,7 +7,16 @@ seed(kernel)
 tsec = 0.1
 for i in range(3):
     try:
-        a = [randint(0, 100) for i in range(10)]
+
+        match i:
+            case 0:
+                a = [i for i in range(10)]
+            case 1:
+                a = [i for i in range(9, -1, -1)]
+            case 2:
+                a = [randint(0, 100) for i in range(10)]
+
+
         print(a)
         sleep(tsec)
         for i in range(len(a)):
