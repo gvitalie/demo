@@ -1,5 +1,4 @@
 import threading
-
 import cv2
 import sounddevice as sd
 
@@ -20,7 +19,8 @@ def microphone(event):
 if __name__ == "__main__":
 
     microphone_event = threading.Event()
-    microphone_thread = threading.Thread(target=microphone, args=(microphone_event,))
+    microphone_thread = threading.Thread(target=microphone,
+                                         args=(microphone_event,))
     microphone_thread.daemon = True
     microphone_thread.start()
 

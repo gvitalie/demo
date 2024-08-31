@@ -18,7 +18,6 @@ for i in range(3):
 
 
         print(a)
-        sleep(tsec)
         for i in range(len(a)):
             print("{:>4}:".format(a[i]), end=' ')
             index = 0

@@ -1,6 +1,5 @@
 import bisect
 from random import randint, seed
-from time import sleep
 import queue
 
 kernel = 13
@@ -19,4 +18,3 @@ for i in range(3):
         index = bisect.bisect_right(q, temp)
         q.insert(index, temp)
     print(q, '\n')
-    sleep(tsec)

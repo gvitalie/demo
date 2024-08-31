@@ -2,7 +2,7 @@ import cv2
 
 if __name__ == "__main__":
 
-    web_cam_video = cv2.VideoCapture(0)
+    web_cam_video = cv2.VideoCapture(2)
 
     print("Streaming ...")
     try:
