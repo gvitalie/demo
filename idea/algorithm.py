@@ -5,7 +5,6 @@ import queue
 kernel = 13
 seed(kernel)
 
-tsec = 1
 for i in range(3):
 
     a = [randint(10, 99) for i in range(10)]
